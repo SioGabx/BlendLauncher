@@ -25,11 +25,16 @@ namespace BlendLauncher
             }
         }
 
+        public void Launch(string Path)
+        {
+            this.Close();
+            BlendStarter.Launch(Path);
+        }
         private void Launch_Click(object sender, RoutedEventArgs e)
         {
             if (ChooserVersions.SelectedItem is BlenderVersion selected)
             {
-                BlendStarter.Launch(selected.Path);
+                Launch(selected.Path);
             }
             else
             {
@@ -52,8 +57,7 @@ namespace BlendLauncher
 
             if (obj is ListBoxItem listBoxItem && listBoxItem.Content is BlenderVersion selected)
             {
-                BlendStarter.Launch(selected.Path);
-                Application.Current.Shutdown();
+                Launch(selected.Path);
             }
         }
 
