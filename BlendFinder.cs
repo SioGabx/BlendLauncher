@@ -2,6 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Windows.Interop;
+using System.Windows.Media.Imaging;
+using System.Windows.Media;
+using System.Runtime.InteropServices;
 
 namespace BlendLauncher
 {
@@ -9,6 +13,9 @@ namespace BlendLauncher
     {
         public string Name { get; set; }
         public string Path { get; set; }
+        public ImageSource Icon => IconHelper.GetIcon(Path, IconHelper.ItemType.File, IconHelper.IconSize.Large, IconHelper.ItemState.Undefined);
+
+
     }
 
     public static class BlendFinder
@@ -24,7 +31,7 @@ namespace BlendLauncher
             }
         }
 
-        public static string BlenderFoundationSearchPath => Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "Blender Foundation");
+        public static string BlenderFoundationSearchPath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "Blender Foundation");
 
         private static List<BlenderVersion> SearchAllInstalledVersions()
         {
