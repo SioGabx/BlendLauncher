@@ -1,22 +1,37 @@
-<Window x:Class="BlendLauncher.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-         xmlns:ui="http://schemas.modernwpf.com/2019"
-        ui:WindowHelper.UseModernWindowStyle="True"
-        Title="Choisissez la version de Blender" Height="500" Width="400" MinWidth="300" MinHeight="250">
-    <Window.Resources>
-
-
-    </Window.Resources>
+<Window
+    x:Class="BlendLauncher.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ui="http://schemas.modernwpf.com/2019"
+    Title="Choisissez la version de Blender"
+    Width="400"
+    Height="300"
+    MinWidth="300"
+    MinHeight="250"
+    ui:WindowHelper.UseModernWindowStyle="True"
+    WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Window.Resources />
     <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="5"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="5" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
         </Grid.RowDefinitions>
-        <ListBox x:Name="ChooserVersions" DisplayMemberPath="Name" SelectedValuePath="Path" Grid.Row="1" MouseDoubleClick="ChooserVersions_MouseDoubleClick"/>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0"  Grid.Row="2">
-            <Button Content="Lancer" Click="Launch_Click" Width="150" />
+        <ListBox
+            x:Name="ChooserVersions"
+            Grid.Row="1"
+            DisplayMemberPath="Name"
+            MouseDoubleClick="ChooserVersions_MouseDoubleClick"
+            SelectedValuePath="Path" />
+        <StackPanel
+            Grid.Row="2"
+            Margin="0,10,0,0"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+            <Button
+                Width="150"
+                Click="Launch_Click"
+                Content="Lancer" />
         </StackPanel>
     </Grid>
 </Window>

@@ -56,5 +56,24 @@ namespace BlendLauncher
                 Application.Current.Shutdown();
             }
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            //Restore size but keep at screen center
+            if (Properties.Settings.Default.WindowWidth > 0 && Properties.Settings.Default.WindowHeight > 0)
+            {
+                Left += ((ActualWidth - Properties.Settings.Default.WindowWidth) / 2);
+                Top += ((ActualHeight - Properties.Settings.Default.WindowHeight) / 2);
+                Width = Properties.Settings.Default.WindowWidth;
+                Height = Properties.Settings.Default.WindowHeight;
+            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Properties.Settings.Default.WindowWidth = this.Width;
+            Properties.Settings.Default.WindowHeight = this.Height;
+            Properties.Settings.Default.Save(); //Settings saved at %localappdata%\BlendLauncher
+        }
     }
 }

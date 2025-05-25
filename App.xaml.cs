@@ -11,14 +11,6 @@ namespace BlendLauncher
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-
-            if (e.Args.Length == 0)
-            {
-                MessageBox.Show("Aucun argument fourni.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-                Shutdown();
-                return;
-            }
-
             if (BlendFinder.GetInstalledVersions.Count == 0)
             {
                 MessageBox.Show($"Aucune version de blender détéctée.\nChemin de recherche : {BlendFinder.BlenderFoundationSearchPath}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
