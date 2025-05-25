@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "BlendLauncherWPF": {
+      "commandName": "Project",
+      //"commandLineArgs": "\"\\test.blend\""
+    }
+  }
+}
