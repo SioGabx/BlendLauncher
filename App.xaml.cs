@@ -14,16 +14,7 @@ namespace BlendLauncher
 
             if (e.Args.Length == 0)
             {
-                MessageBox.Show("Aucun fichier .blend fourni.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-                Shutdown();
-                return;
-            }
-
-            string blendFile = e.Args[0];
-
-            if (!File.Exists(blendFile))
-            {
-                MessageBox.Show("Le fichier n'existe pas", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Aucun argument fourni.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 Shutdown();
                 return;
             }
