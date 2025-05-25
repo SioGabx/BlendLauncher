@@ -6,19 +6,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace BlendLauncherWPF
+namespace BlendLauncher
 {
     public static class BlendStarter
     {
         public static void Launch(string Path)
         {
-            Process.Start(new ProcessStartInfo
+            try
             {
-                FileName = Path,
-                Arguments = string.Join(" ", Environment.GetCommandLineArgs().Skip(1).Select(arg => $"\"{arg}\"")),
-                UseShellExecute = true
-            });
-
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = Path,
+                    Arguments = string.Join(" ", Environment.GetCommandLineArgs().Skip(1).Select(arg => $"\"{arg}\"")),
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
             Application.Current.Shutdown();
         }
     }
